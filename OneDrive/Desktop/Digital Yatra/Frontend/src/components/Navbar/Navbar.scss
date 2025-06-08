@@ -1,0 +1,84 @@
+// Navbar.scss
+
+.custom-navbar {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+
+  // Glassy, dark backdrop
+  background: rgba(15, 15, 15, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+
+  .container {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0.75rem 1rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  // ─── BRAND / LOGO ───
+  .brand {
+    a {
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+
+      .logo-text {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #ffffff;
+        letter-spacing: 0.5px;
+      }
+    }
+  }
+
+  // ─── NAV LIST ───
+  .nav-list {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+
+    // Hides overflow for the slide animation
+    overflow: hidden;
+
+    .nav-item {
+      margin-left: 1.75rem;
+      color: black;
+
+      .nav-link {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        color: #ff0000;
+        font-size: 1rem;
+        font-weight: 500;
+        transition: color 0.2s ease;
+
+        .nav-icon {
+          margin-right: 0.5rem;
+          width: 1.2rem;
+          height: 1.2rem;
+          color: #a0a0a0;
+          transition: color 0.2s ease;
+        }
+
+        &:hover {
+          color: #1abc9c;
+
+          .nav-icon {
+            color: #1abc9c;
+          }
+        }
+      }
+    }
+  }
+
+}

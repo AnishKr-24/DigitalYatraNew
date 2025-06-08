@@ -1,0 +1,51 @@
+.train-offers {
+  padding: 2rem;
+  font-family: 'Segoe UI', sans-serif;
+
+  h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: #2c3e50;
+  }
+
+  ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    list-style: none;
+    padding: 0;
+  }
+
+  .offer-card {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 1.2rem 1.5rem;
+    background-color: #f0f8ff;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background-color: #eaf4ff;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h3 {
+      font-size: 1.2rem;
+      color: #1a5276;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      margin: 0.3rem 0;
+      font-size: 1rem;
+
+      code {
+        background-color: #d6eaf8;
+        padding: 0.2rem 0.5rem;
+        border-radius: 4px;
+        font-weight: 600;
+        color: #21618c;
+      }
+    }
+  }
+}

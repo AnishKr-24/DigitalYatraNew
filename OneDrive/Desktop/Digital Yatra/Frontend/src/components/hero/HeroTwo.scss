@@ -1,0 +1,107 @@
+// HeroTwo.scss
+
+.hero-two {
+  background: #fff;
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  max-width: 1100px;
+  margin: 2rem auto;
+
+  // Tabs
+  .bw-tabs {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1rem;
+    li {
+      flex: 1;
+      text-align: center;
+      padding: 0.75rem 0;
+      cursor: pointer;
+      border-bottom: 3px solid transparent;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.5rem;
+
+      &.active {
+        color: #e35d5b;
+        border-color: #e35d5b;
+      }
+    }
+  }
+
+  // Form grid
+  .bw-form {
+    display: grid;
+    grid-template-columns:
+      1fr auto 1fr 1.5fr auto auto auto;
+    grid-gap: 0.5rem;
+    align-items: center;
+
+    .field {
+      display: flex;
+      flex-direction: column;
+
+      label {
+        font-size: 0.85rem;
+        color: #666;
+        margin-bottom: 0.25rem;
+      }
+
+      input[type="text"],
+      input[type="date"] {
+        padding: 0.5rem;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        font-size: 1rem;
+      }
+
+      &.date-field {
+        .date-input {
+          position: relative;
+          display: flex;
+          align-items: center;
+
+          svg {
+            position: absolute;
+            left: 0.75rem;
+            color: #888;
+          }
+
+          input {
+            padding-left: 2rem;
+          }
+        }
+      }
+    }
+
+    .swap-btn {
+      background: none;
+      border: none;
+      font-size: 1.25rem;
+      color: #888;
+      cursor: pointer;
+    }
+
+    .today-btn,
+    .tomorrow-btn {
+      background: #a43737;
+      border: none;
+      border-radius: 6px;
+      padding: 0.6rem 0.8rem;
+      cursor: pointer;
+    }
+
+    .search-btn {
+      background: #e35d5b;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 0.75rem 1.2rem;
+      cursor: pointer;
+      grid-column: -1; // stick to the rightmost column
+    }
+  }
+}

@@ -1,0 +1,19 @@
+.full-bleed {
+  position: relative;
+  left: 50%;
+  height: 50%;
+  transform: translateX(-50%);
+  width: 100vw;
+  overflow: hidden;
+  padding: 0 !important;
+}
+.abc {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100vw;       // span whole viewport
+  height: 50vh;       // pick your desired height
+  overflow: hidden;   // hide any overflow
+  margin: 0;
+  padding: 0;
+}
