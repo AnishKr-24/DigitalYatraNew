@@ -70,13 +70,17 @@
 //   );
 // }
 
+
+
+
+
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { HiHome, HiTag, HiTicket, HiUser } from "react-icons/hi";
 import { BiHeadphone } from "react-icons/bi";
 import "./Navbar.scss";
 
-export default function Navbar() {
+export default function Navbar({ setSelected }) {
   const [submenuOpen, setSubmenuOpen] = useState(false);
 
   const navItems = [
@@ -86,9 +90,9 @@ export default function Navbar() {
       name: "Ticket Booking",
       Icon: HiTicket,
       subItems: [
-        { name: "Bus", href: "/bus" },
-        { name: "Train", href: "/train" },
-        { name: "Flight", href: "/flight" },
+        { name: "Bus", key: "bus" },
+        { name: "Train", key: "train" },
+        { name: "Flight", key: "flight" },
       ],
     },
     { name: "Need Help", href: "#NeedHelp", Icon: BiHeadphone },
@@ -113,23 +117,38 @@ export default function Navbar() {
                 if (subItems) setSubmenuOpen((prev) => !prev);
               }}
             >
-              {href?.startsWith("/") ? (
-                <Link className="nav-link" to={href}>
-                  <Icon className="nav-icon" />
-                  <span className="nav-text">{name}</span>
-                </Link>
+              {href ? (
+                href.startsWith("/") ? (
+                  <Link className="nav-link" to={href}>
+                    <Icon className="nav-icon" />
+                    <span className="nav-text">{name}</span>
+                  </Link>
+                ) : (
+                  <a className="nav-link" href={href}>
+                    <Icon className="nav-icon" />
+                    <span className="nav-text">{name}</span>
+                  </a>
+                )
               ) : (
-                <a className="nav-link" href={href}>
+                <div className="nav-link">
                   <Icon className="nav-icon" />
                   <span className="nav-text">{name}</span>
-                </a>
+                </div>
               )}
 
               {subItems && submenuOpen && (
                 <ul className="submenu">
                   {subItems.map((item) => (
                     <li key={item.name}>
-                      <Link to={item.href}>{item.name}</Link> {/* ✅ Use Link */}
+                      <button
+                        className="submenu-btn"
+                        onClick={() => {
+                          setSelected(item.key); // Set foreground
+                          setSubmenuOpen(false); // Close submenu
+                        }}
+                      >
+                        {item.name}
+                      </button>
                     </li>
                   ))}
                 </ul>

@@ -1,15 +1,13 @@
 import React, { useState } from 'react';
-import {
-  FaTrain,
-  FaExchangeAlt,
-  FaCalendarAlt,
-} from 'react-icons/fa';
-// import './HeroTwo.scss';
+import { FaTrain, FaExchangeAlt, FaCalendarAlt } from 'react-icons/fa';
+// import './Main.scss'; // Uncomment if your styles are in this file
 
 export default function Train() {
   const [from, setFrom] = useState('');
   const [to, setTo] = useState('');
   const [date, setDate] = useState('');
+
+  const cities = ['Delhi', 'Mumbai', 'Bangalore', 'Kolkata', 'Chennai', 'Hyderabad', 'Ahmedabad'];
 
   const formatYMD = (d) => d.toISOString().slice(0, 10);
 
@@ -37,12 +35,14 @@ export default function Train() {
       <div className="bw-form">
         <div className="field">
           <label>Leaving From</label>
-          <input
-            type="text"
-            placeholder="City or station"
-            value={from}
-            onChange={(e) => setFrom(e.target.value)}
-          />
+          <select value={from} onChange={(e) => setFrom(e.target.value)}>
+            <option value="" disabled>Select city</option>
+            {cities.map((city) => (
+              <option key={city} value={city}>
+                {city}
+              </option>
+            ))}
+          </select>
         </div>
 
         <button
@@ -58,12 +58,14 @@ export default function Train() {
 
         <div className="field">
           <label>Going To</label>
-          <input
-            type="text"
-            placeholder="City or station"
-            value={to}
-            onChange={(e) => setTo(e.target.value)}
-          />
+          <select value={to} onChange={(e) => setTo(e.target.value)}>
+            <option value="" disabled>Select city</option>
+            {cities.map((city) => (
+              <option key={city} value={city}>
+                {city}
+              </option>
+            ))}
+          </select>
         </div>
 
         <div className="field date-field">
@@ -74,7 +76,7 @@ export default function Train() {
               type="date"
               value={date}
               onChange={(e) => setDate(e.target.value)}
-              min={formatYMD(new Date())} // No past dates
+              min={formatYMD(new Date())}
             />
           </div>
         </div>

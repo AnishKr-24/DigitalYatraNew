@@ -1,18 +1,15 @@
 import React, { useState } from 'react';
-import {
-  FaPlane,
-  FaExchangeAlt,
-  FaCalendarAlt,
-} from 'react-icons/fa';
-// import './HeroTwo.scss';
+import { FaPlane, FaExchangeAlt, FaCalendarAlt } from 'react-icons/fa';
+import './Main.scss';
 
 export default function Flight() {
   const [from, setFrom] = useState('');
   const [to, setTo] = useState('');
   const [date, setDate] = useState('');
 
-  // Format date as YYYY-MM-DD
-  const formatYMD = d => d.toISOString().slice(0, 10);
+  const cities = ['Delhi', 'Mumbai', 'Bangalore', 'Kolkata', 'Chennai', 'Hyderabad', 'Ahmedabad'];
+
+  const formatYMD = (d) => d.toISOString().slice(0, 10);
 
   const handleToday = () => {
     setDate(formatYMD(new Date()));
@@ -26,7 +23,7 @@ export default function Flight() {
 
   return (
     <div className="hero-two">
-      {/* Title/Heading */}
+      {/* Title/Header */}
       <ul className="bw-tabs single-tab">
         <li className="active">
           <FaPlane /> Flights
@@ -34,16 +31,18 @@ export default function Flight() {
         <li className="tab-text-right">Book Your Flight</li>
       </ul>
 
-      {/* Form */}
+      {/* Booking Form */}
       <div className="bw-form">
         <div className="field">
           <label>Leaving From</label>
-          <input
-            type="text"
-            placeholder="City or airport"
-            value={from}
-            onChange={e => setFrom(e.target.value)}
-          />
+          <select value={from} onChange={(e) => setFrom(e.target.value)}>
+            <option value="" disabled>Select city</option>
+            {cities.map((city) => (
+              <option key={city} value={city}>
+                {city}
+              </option>
+            ))}
+          </select>
         </div>
 
         <button
@@ -59,12 +58,14 @@ export default function Flight() {
 
         <div className="field">
           <label>Going To</label>
-          <input
-            type="text"
-            placeholder="City or airport"
-            value={to}
-            onChange={e => setTo(e.target.value)}
-          />
+          <select value={to} onChange={(e) => setTo(e.target.value)}>
+            <option value="" disabled>Select city</option>
+            {cities.map((city) => (
+              <option key={city} value={city}>
+                {city}
+              </option>
+            ))}
+          </select>
         </div>
 
         <div className="field date-field">
@@ -74,7 +75,7 @@ export default function Flight() {
             <input
               type="date"
               value={date}
-              onChange={e => setDate(e.target.value)}
+              onChange={(e) => setDate(e.target.value)}
               min={formatYMD(new Date())}
             />
           </div>
